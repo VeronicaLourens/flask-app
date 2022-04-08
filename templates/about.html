@@ -8,7 +8,7 @@
         <p>{{ number }}</p>
     {% endfor %} -->
 
-    {{ company[1] ['name'] }}
+    <!-- {{ company[1] ['name'] }} -->
 
 
     <!-- <h2>About Page</h2> -->
@@ -23,7 +23,48 @@
         to leave on other business, welcomed a fourteenth to fill into their party.
     </p>
 
-    <div class="row featurette">
+    <!--delete the company expression and the div about Fili and Kili, then add a for loop-->
+    {% for member in company %}
+
+    
+
+        <div class="row featurette">
+
+            {% if loop.index % 2 != 0 %}
+
+                <div class="col-md-7">
+                    <h3>{{ loop.index }}. {{ member.name }}</h3>
+                    <p>{{ member.description }}</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+                </div>
+
+            {% else %}
+
+                <div class="col-md-5">
+                    <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+                </div>
+                <div class="col-md-7">
+                    <h3>{{ loop.index }}. {{ member.name }}</h3>
+                    <p>{{ member.description }}</p>
+                </div>
+
+            {% endif %}
+
+        </div>
+
+        {% if loop.index != loop.length %}
+
+            <hr class="featurette-divider">
+
+        {% endif %}
+
+        
+
+     
+
+    <!-- <div class="row featurette">
         <div class="col-md-7">
             <h3>Thorin Oakenshield</h3>
             <p>
@@ -40,9 +81,11 @@
         <div class="col-md-5">
             <img src="https://static.wikia.nocookie.net/lotr/images/3/3f/ThorinBIG.jpg" alt="">
         </div>
-    </div>
+    </div> -->
 
-    <div class="row featurette">
+
+
+    <!-- <div class="row featurette">
         <div class="col-md-5">
             <img src="https://static.wikia.nocookie.net/lotr/images/b/b4/The-Hobbit-Fili-and-Kili.jpg" alt="">
         </div>
@@ -54,7 +97,9 @@
                 feature was his long nose, the longest of any of the Dwarves in Thorin's company.[2]
             </p>
         </div>
-    </div>
+    </div> -->
+
+    {% endfor %}
 
 
 {% endblock %}
